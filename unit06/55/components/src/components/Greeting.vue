@@ -1,5 +1,6 @@
 <template>
-    <p>{{ msg }}</p>
+    <p v-if="age > 25">{{ msg }}</p>
+    <p v-else>You must be 25 years or older to view this message</p>
 </template>
 
 <script>
@@ -9,7 +10,8 @@
             return {
                 msg: "Howdydo?"
             }
-        }
+        },
+        props: ["age"]
     }
 </script>
 <style scoped lang="scss">
