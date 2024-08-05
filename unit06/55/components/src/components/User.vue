@@ -7,7 +7,16 @@
 export default {
     name: "User",
     emits: ["age-change"],
-    props: ["age"],
+    props: {
+        age: {
+            type: Number,
+            // required: true,
+            // default: 20,
+            validator(value){
+                return value < 130
+            }
+        }
+    },
     methods: {
         onClickAge() {
             this.$emit("age-change", 3)
