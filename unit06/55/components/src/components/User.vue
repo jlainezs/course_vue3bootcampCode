@@ -1,5 +1,6 @@
 <template>
-    <button type="button" @click="onClickAge">Update age</button>
+    <button type="button" @click="onClickAge">Update age event</button>
+    <button type="button" @click="ageChangeFn(3)">Update age CB</button>
    <p>The user is {{ age }} years old.</p>
    <p> {{ ageDoubled }}</p>
 </template>
@@ -15,11 +16,12 @@ export default {
             validator(value){
                 return value < 130
             }
-        }
+        },
+        ageChangeFn: Function
     },
     methods: {
         onClickAge() {
-            this.$emit("age-change", 3)
+            this.$emit("age-change", 1)
         }
     },
     computed: {
