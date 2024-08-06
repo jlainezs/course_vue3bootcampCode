@@ -30,7 +30,10 @@
   <button @click="addItem">Add</button>
 
   <ul>
-    <transition-group name="fade">
+    <transition-group name="fade"
+      enter-active-class="animate__animated animate_flipInX"
+      leave-active-class="animate__animated animate_flipOutX"
+      >
       <li v-for="(number, index) in numbers" :key="number" @click="removeItem(index)">
         {{ number }}
       </li>
@@ -171,4 +174,11 @@ h2 {
   }
 }
 
+.animate__animated {
+  animation-duration: 1.5s;
+}
+
+.animate_flipOutX{
+  position: absolute;
+}
 </style>
