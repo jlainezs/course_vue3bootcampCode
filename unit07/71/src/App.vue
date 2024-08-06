@@ -128,6 +128,14 @@ h2 {
   opacity: 0;
 }
 
+.fade-leave-active{
+  position: absolute;
+}
+
+.fade-move{
+  transition: all 0.25s linear;
+}
+
 .zoom-enter-active{
   animation: zoon-in 1s linear forwards;
   transition: all 2s linear;
