@@ -116,10 +116,15 @@
               <label class="inline-block mb-2">Password</label>
               <vee-field
                 name="password"
-                type="password"
-                class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition duration-500 focus:outline-none focus:border-black rounded"
-                placeholder="Password"
-              />
+                :bails="false"
+                v-slot="{ field, errors }">
+                <input type="password" placeholder="Password"
+                v-bind="field"
+                class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition duration-500 focus:outline-none focus:border-black rounded"/>
+                <div class="text-red-600" v-for="error in errors" :key="error">
+                  {{ error }}
+                </div>
+              </vee-field>
               <error-message class="text-red-600" name="password" />
             </div>
             <!-- Confirm Password -->
@@ -181,7 +186,7 @@ export default {
         name: "required|min:3|max:100|alpha_spaces",
         email: "required|email|max:100",
         age: "required|min_value:18|max_value:100",
-        password: "required|min:3|max:100",
+        password: "required|min:9|max:100|excluded:password",
         confirm_password: "confirmed:@password",
         country: "required|excluded:XXX",
         tos: "required",
