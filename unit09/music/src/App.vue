@@ -275,19 +275,19 @@
     </div>
 
     <!-- Auth Modal -->
-    <app-auth />
-    
+    <auth />
+
 </template>
 
 <script>
-import AppHeader from "@/components/AppHeader.vue";
-import AppAuth from "@/components/AppAuth.vue";
+import AppHeader from "@/components/Header.vue";
+import Auth from "@/components/Auth.vue";
 
 export default {
   name: "App",
   components: {
     AppHeader,
-    AppAuth,
+    Auth,
   }
 }
 </script>
