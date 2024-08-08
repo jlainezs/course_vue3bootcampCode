@@ -78,6 +78,7 @@
           </form>
           <!-- Registration Form -->
           <vee-form v-show="tab === 'register'" :validation-schema="schema"
+            :initial-values="userData"
             @submit="register">
             <!-- Name -->
             <div class="mb-3">
@@ -190,6 +191,9 @@ export default {
         confirm_password: "confirmed:@password",
         country: "required|excluded:XXX",
         tos: "required",
+      },
+      userData: {
+        country: 'USA',
       }
     }
   },
