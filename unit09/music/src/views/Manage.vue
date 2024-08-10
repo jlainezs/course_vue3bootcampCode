@@ -136,17 +136,18 @@
 </template>
 
 <script>
-import useUserStore from "@/stores/user";
+import useUserStore from '@/stores/user'
 
 export default {
   name: 'manage',
   beforeRouteEnter(to, from, next) {
-    const store = useUserStore;
+    const store = useUserStore();
+    console.log(store.userLoggedIn)
 
     if (store.userLoggedIn) {
-      next();
+      next()
     } else {
-      next({name: "home"});
+      next({ name: 'home' })
     }
 
     console.log('before route enter component')
