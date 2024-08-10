@@ -136,21 +136,21 @@
 </template>
 
 <script>
-import useUserStore from '@/stores/user'
+// import useUserStore from '@/stores/user'
 
 export default {
   name: 'manage',
-  beforeRouteEnter(to, from, next) {
-    const store = useUserStore();
-    console.log(store.userLoggedIn)
+  // beforeRouteEnter(to, from, next) {
+  //   const store = useUserStore();
+  //   console.log(store.userLoggedIn)
 
-    if (store.userLoggedIn) {
-      next()
-    } else {
-      next({ name: 'home' })
-    }
+  //   if (store.userLoggedIn) {
+  //     next()
+  //   } else {
+  //     next({ name: 'home' })
+  //   }
 
-    console.log('before route enter component')
-  }
+  //   console.log('before route enter component')
+  // }
 }
 </script>
