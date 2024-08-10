@@ -18,6 +18,10 @@ const routes = [
     name: "manage",
     // alias: "/manage",
     path: "/manage-music",
+    beforeEnter: (to, from, next) => {
+      console.log("Manage route guard");
+      next();
+    },
     component: Manage,
   },
   {
@@ -37,7 +41,7 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  console.log(to, from);
+  console.log("Global guard");
 
   next();
 });
