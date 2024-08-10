@@ -3,7 +3,6 @@ import Home from "@/views/Home.vue"
 import About from "@/views/About.vue"
 import Manage from "@/views/Manage.vue"
 
-
 const routes = [
   {
     name: "home",
@@ -17,6 +16,7 @@ const routes = [
   },
   {
     name: "manage",
+    // alias: "/manage",
     path: "/manage-music",
     component: Manage,
   },
