@@ -20,6 +20,7 @@
                         type="text"
                         class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition duration-500 focus:outline-none focus:border-black rounded"
                         placeholder="Enter Song Title"
+                        @input="updateUnsavedFlag(true)"
                         name="modified_name"
                     />
                     <error-message class="text-red-500" name="modified_name" />
@@ -30,6 +31,7 @@
                         type="text"
                         class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition duration-500 focus:outline-none focus:border-black rounded"
                         placeholder="Enter Genre"
+                        @input="updateUnsavedFlag(true)"
                         name="genre"
                     />
                     <error-message class="text-red-500" name="genre" />
@@ -66,6 +68,9 @@ export default {
         removeSong: {
             type: Function,
             required: true,
+        },
+        updateUnsavedFlag: {
+            type: Function,
         },
         index: {
             type: Number,
@@ -107,6 +112,7 @@ export default {
             this.show_alert = true;
             this.alert_variant = "bg-green-500";
             this.alert_message = "Success!";
+            this.updateUnsavedFlag(false);
         },
         async deleteSong() {
             const storageRef = storage.ref();
