@@ -15,7 +15,8 @@
             <composition-item v-for="(song, i) in songs" :key="song.docID"
               :song="song"
               :update-song="updateSong"
-              :index="i"/>
+              :index="i"
+              :remove-song="removeSong" />
           </div>
         </div>
       </div>
@@ -44,7 +45,10 @@ export default {
     updateSong(i, values) {
       this.songs[i].modified_name = values.modified_name
       this.songs[i].genre = values.genre
-    }
+    },
+    removeSong(i) {
+      this.songs.splice(i, 1);
+    },
   },
   async created() {
     const snapshot = await songsCollection.where('uid', '==', auth.currentUser.uid).get()
@@ -55,7 +59,7 @@ export default {
       }
       this.songs.push(song)
     })
-  }
+  },
   // beforeRouteLeave(to, from, next){
   //   this.$refs.upload.cancelUploads();
   //   next();
