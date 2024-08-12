@@ -4,5 +4,13 @@
     },
     "song":{
         "comment_count": "No hi ha comentaris| 1 comentari | {count} comentaris"
+    },
+    "register":{
+        "accept": "Accepto {0} de Music",
+        "tos": "Termes de Servei"
+    },
+    "manage":{
+        "my_songs": "Les meves cançons"
     }
+
 }
