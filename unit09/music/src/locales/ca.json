@@ -1,5 +1,8 @@
 {
     "home":{
         "listen": "Escolta la millor música!"
+    },
+    "song":{
+        "comment_count": "No hi ha comentaris| 1 comentari | {count} comentaris"
     }
 }
