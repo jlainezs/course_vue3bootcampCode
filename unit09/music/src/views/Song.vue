@@ -104,6 +104,19 @@ export default {
       });
     },
   },
+  watch: {
+    sort(newVal) {
+      if (newVal === this.$route.query.sort) {
+        return;
+      }
+      
+      this.$router.push({
+        query: {
+          sort: newVal,
+        },
+      });
+    },
+  },
   methods: {
     async addComment(values, {resetForm}) {
       this.comment_in_submission = true;
@@ -145,6 +158,11 @@ export default {
       this.$router.push({ name: 'home' });
       return;
     }
+
+    // check for route query parameters
+    const { sort } = this.$route.query;
+
+    this.sort = sort === '1' || sort === '2' ? sort : '1';
 
     this.song = docSnapshot.data();
     this.getComments();
