@@ -1,4 +1,5 @@
 <template>
+  <main>
     <!-- Music Header -->
     <section class="w-full mb-8 py-14 text-center text-white relative">
       <div
@@ -70,6 +71,7 @@
         </p>
       </li>
     </ul>
+  </main>  
 </template>
 
 <script>
