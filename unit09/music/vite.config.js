@@ -29,6 +29,10 @@ export default defineConfig({
             sizes: "512x512",
             type: "image/png",
           },
+        ],
+        workbox: {
+          globPatters: ["**/*.{js,css,html,png,jpg,}"],
+        }
       },
     }),
   ],
