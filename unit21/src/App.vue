@@ -19,11 +19,13 @@
 
 <script>
 import {
-  ref, reactive, toRefs, watchEffect, computed, 
+  ref, reactive, toRefs,
   onBeforeMount, onMounted,
 } from "vue";
 
 import AppAlert from "@/components/Alert.vue";
+import { useNumber } from "@/hooks/number";
+import { usePhrase } from "@/hooks/phrase";
 
 
 export default {
@@ -48,16 +50,6 @@ export default {
       });
     });
 
-    let num = ref(0);
-
-    function increment() {
-      num.value++;
-    }
-
-    const double = computed(() => {
-      return num.value * 2;
-    });
-
     setTimeout(() => {
       user.name = "Perico"
     }, 3000);
@@ -67,12 +59,9 @@ export default {
       age: 20,
     });
 
-    const phrase = ref("");
-    const reversedPhrase = ref("");
 
-    watchEffect(() => {
-       reversedPhrase.value = phrase.value.split("").reverse().join("");
-    });
+    const { num, increment, double } = useNumber();
+    const { phrase, reversedPhrase, num: phraseNum } = usePhrase();
 
     return {
       num,
@@ -83,6 +72,7 @@ export default {
       reversedPhrase,
       double,
       btn,
+      phraseNum,
     };
   },
 };
