@@ -1,23 +1,43 @@
 <template>
   <div>
     <p>{{ num }}</p>
+    <p>{{ double }}</p>
     <button type="button" @click.prevent="increment">Click me!</button>
     <p>{{ user.name }}</p>
     <p>{{ name }}</p>
+    <p>
+      <input type="text" v-model="phrase" />
+    </p>
+    <p>{{ reversedPhrase }}</p>
   </div>
 </template>
 
 <script>
-import { ref, reactive, toRefs } from "vue";
+import {
+  ref, reactive, toRefs, watchEffect, computed, 
+  onBeforeMount, onMounted,
+} from "vue";
 
 export default {
   name: "App",
   setup() {
+    onBeforeMount(() => {
+      console.log("onBeforeMount()");
+    });
+
+    onMounted(() => {
+      console.log("onMounted()");
+    });
+    
     let num = ref(0);
 
     function increment() {
       num.value++;
     }
+
+    const double = computed(() => {
+      return num.value * 2;
+    });
 
     setTimeout(() => {
       user.name = "Perico"
@@ -28,11 +48,21 @@ export default {
       age: 20,
     });
 
+    const phrase = ref("");
+    const reversedPhrase = ref("");
+
+    watchEffect(() => {
+       reversedPhrase.value = phrase.value.split("").reverse().join("");
+    });
+
     return {
       num,
       increment,
       user,
       ...toRefs(user),
+      phrase,
+      reversedPhrase,
+      double,
     };
   },
 };
