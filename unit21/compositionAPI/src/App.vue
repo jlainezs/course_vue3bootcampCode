@@ -17,63 +17,41 @@
   </div>
 </template>
 
-<script>
-import {
-  ref, reactive, toRefs,
-  onBeforeMount, onMounted,
-} from "vue";
+<script setup>
+  import {
+    ref, reactive, toRefs,
+    onBeforeMount, onMounted,
+  } from "vue";
 
-import AppAlert from "@/components/Alert.vue";
-import { useNumber } from "@/hooks/number";
-import { usePhrase } from "@/hooks/phrase";
+  import AppAlert from "@/components/Alert.vue";
+  import { useNumber } from "@/hooks/number";
+  import { usePhrase } from "@/hooks/phrase";
 
+  const btn = ref(null); //initial value for template reference must be null.
 
-export default {
-  name: "App",
-  components: {
-    AppAlert,
-  },
-  setup() {
+  onBeforeMount(() => {
+    console.log("onBeforeMount()");
+  });
 
-    const btn = ref(null); //initial value for template reference must be null.
+  onMounted(() => {
+    console.log("onMounted()");
 
-    onBeforeMount(() => {
-      console.log("onBeforeMount()");
+    //add the event listener to the btn ref.
+    btn.value.addEventListener("click", () => {
+      console.log("Button clicked.");
     });
+  });
 
-    onMounted(() => {
-      console.log("onMounted()");
+  setTimeout(() => {
+    user.name = "Perico"
+  }, 3000);
 
-      //add the event listener to the btn ref.
-      btn.value.addEventListener("click", () => {
-        console.log("Button clicked.");
-      });
-    });
+  const user = reactive({
+    name: 'John',
+    age: 20,
+  });
 
-    setTimeout(() => {
-      user.name = "Perico"
-    }, 3000);
-
-    const user = reactive({
-      name: 'John',
-      age: 20,
-    });
-
-
-    const { num, increment, double } = useNumber();
-    const { phrase, reversedPhrase, num: phraseNum } = usePhrase();
-
-    return {
-      num,
-      increment,
-      user,
-      ...toRefs(user),
-      phrase,
-      reversedPhrase,
-      double,
-      btn,
-      phraseNum,
-    };
-  },
-};
+  const { num, increment, double } = useNumber();
+  const { phrase, reversedPhrase, num: phraseNum } = usePhrase();
+  const { name } = toRefs(user);
 </script>
