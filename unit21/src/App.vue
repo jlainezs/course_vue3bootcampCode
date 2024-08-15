@@ -9,6 +9,9 @@
       <input type="text" v-model="phrase" />
     </p>
     <p>{{ reversedPhrase }}</p>
+
+    <app-alert :user="user" />
+
   </div>
 </template>
 
@@ -18,8 +21,14 @@ import {
   onBeforeMount, onMounted,
 } from "vue";
 
+import AppAlert from "@/components/Alert.vue";
+
+
 export default {
   name: "App",
+  components: {
+    AppAlert,
+  },
   setup() {
     onBeforeMount(() => {
       console.log("onBeforeMount()");
@@ -28,7 +37,7 @@ export default {
     onMounted(() => {
       console.log("onMounted()");
     });
-    
+
     let num = ref(0);
 
     function increment() {
